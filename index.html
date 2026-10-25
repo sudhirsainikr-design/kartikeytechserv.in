@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Kartikey Tech Services | SainiSamajVivah</title>
+
+  <meta
+    name="description"
+    content="Kartikey Tech Services operates SainiSamajVivah under the AllSamajVivah Control Center framework, providing structured digital matrimonial services for eligible communities."
+  />
+
+  <style>
+    :root {
+      --primary: #8f2038;
+      --primary-dark: #6f162a;
+      --gold: #b98423;
+      --cream: #fffaf3;
+      --cream-dark: #f7efe3;
+      --text: #302a2a;
+      --muted: #6f6868;
+      --border: #eadcc8;
+      --white: #ffffff;
+      --success-bg: #f5f9f4;
+      --shadow: 0 12px 30px rgba(65, 38, 38, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      text-decoration: none;
+    }
+
+    .brand-main {
+      display: block;
+      color: var(--primary);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .brand-sub {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      margin-top: -4px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: #453c3c;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(255, 249, 240, 0.98), rgba(249, 235, 231, 0.98));
+      padding: 95px 0;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 68px);
+      margin: 0 0 20px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      margin-top: 0;
+    }
+
+    h3 {
+      font-size: 22px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: #554b4b;
+      max-width: 760px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      background: var(--white);
+    }
+
+    section {
+      padding: 78px 0;
+      scroll-margin-top: 90px;
+    }
+
+    section:nth-of-type(even) {
+      background: var(--cream);
+    }
+
+    .section-intro {
+      max-width: 820px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .about-copy {
+      max-width: 940px;
+    }
+
+    .about-copy p {
+      margin-bottom: 22px;
+    }
+
+    .operator-note {
+      margin-top: 28px;
+      padding: 18px 22px;
+      background: var(--cream-dark);
+      border-left: 4px solid var(--gold);
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .feature-grid,
+    .plan-grid,
+    .policy-grid,
+    .contact-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .feature-grid {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 35px;
+    }
+
+    .plan-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 850px;
+    }
+
+    .policy-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contact-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 27px;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-card {
+      text-align: center;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 5px;
+    }
+
+    .feature-card p {
+      margin-top: 0;
+      color: var(--muted);
+    }
+
+    .plan-card {
+      position: relative;
+    }
+
+    .plan-card.recommended {
+      border: 2px solid var(--gold);
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--gold);
+      color: white;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      color: var(--primary);
+      font-size: 34px;
+      font-weight: bold;
+      margin: 14px 0 2px;
+    }
+
+    .price-note {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .plan-card ul {
+      padding-left: 20px;
+    }
+
+    .notice {
+      margin-top: 26px;
+      max-width: 900px;
+      padding: 20px 22px;
+      background: var(--success-bg);
+      border: 1px solid #dce8d9;
+      border-radius: 10px;
+    }
+
+    .contact-card strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 9px;
+    }
+
+    .contact-card a {
+      color: var(--primary);
+      word-break: break-word;
+    }
+
+    .policy {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+
+    .policy h3 {
+      margin-top: 0;
+    }
+
+    .policy p,
+    .policy li {
+      color: #544d4d;
+    }
+
+    .policy ul {
+      padding-left: 20px;
+    }
+
+    footer {
+      background: #341b21;
+      color: #f7eeee;
+      padding: 45px 0 28px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 30px;
+    }
+
+    .footer-title {
+      color: white;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+    }
+
+    .footer-links a {
+      color: #f1dede;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin-top: 30px;
+      padding-top: 20px;
+      font-size: 13px;
+      color: #d9c7c7;
+    }
+
+    @media (max-width: 850px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 17px 0;
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      .feature-grid,
+      .plan-grid,
+      .policy-grid,
+      .contact-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 70px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#home" class="brand">
+      <span class="brand-main">SainiSamajVivah</span>
+      <span class="brand-sub">Operated by Kartikey Tech Services</span>
+    </a>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#membership">Membership</a>
+      <a href="#contact">Contact</a>
+      <a href="#policies">Policies</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+
+  <!-- HOME -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <div class="eyebrow">Community Matrimonial Platform</div>
+
+      <h1>Meaningful Connections, Built Around Community</h1>
+
+      <p>
+        SainiSamajVivah is a structured digital matrimonial service currently
+        serving members of the Saini, Mali, Shakya, Kushwah and Maurya communities.
+        The platform operates under the AllSamajVivah Control Center framework
+        and is operated by Kartikey Tech Services.
+      </p>
+
+      <div class="button-row">
+        <a class="btn btn-primary" href="#membership">View Membership</a>
+        <a class="btn btn-secondary" href="#contact">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="eyebrow">About Us</div>
+
+      <h2>Building Digital Platforms for Communities and Society</h2>
+
+      <div class="about-copy">
+        <p>
+          <strong>Kartikey Tech Services</strong> is an enterprise-oriented
+          technology and social development organization engaged in building
+          practical digital solutions and services across areas including
+          consultancy, research &amp; development, platform design, technology
+          implementation, and production-oriented digital initiatives.
+        </p>
+
+        <p>
+          One of its major social-platform initiatives is
+          <strong>AllSamajVivah Control Center</strong> — a broader matrimonial
+          technology framework designed to serve diverse societies and communities
+          irrespective of religion, caste, region, or other community-specific
+          structures.
+        </p>
+
+        <p>
+          The AllSamajVivah framework is designed so that individual communities
+          can operate matrimonial platforms aligned with their own identity,
+          traditions, preferences, and community requirements while benefiting
+          from a common technology and governance foundation.
+        </p>
+
+        <p>
+          <strong>SainiSamajVivah</strong> is the currently operational community
+          matrimonial platform under this framework, serving members of the
+          <strong>Saini, Mali, Shakya, Kushwah and Maurya communities</strong>
+          through a structured digital matrimonial service.
+        </p>
+
+        <p>
+          The broader vision of AllSamajVivah is to progressively support
+          additional community-specific matrimonial platforms, including intended
+          future services such as <strong>BrahminSamajVivah</strong> and
+          <strong>VaishySamajVivah</strong>, while maintaining appropriate privacy,
+          platform governance, community configuration, and technology standards.
+        </p>
+
+        <div class="operator-note">
+          SainiSamajVivah is operated by Kartikey Tech Services under the
+          AllSamajVivah Control Center framework.
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <div class="card feature-card">
+          <h3>Saini Samaj</h3>
+          <p>Community Focus</p>
+        </div>
+
+        <div class="card feature-card">
+          <h3>Digital</h3>
+          <p>Structured Online Platform</p>
+        </div>
+
+        <div class="card feature-card">
+          <h3>Secure</h3>
+          <p>Privacy Controlled</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- MEMBERSHIP -->
+  <section id="membership">
+    <div class="container">
+      <div class="eyebrow">Membership</div>
+
+      <h2>Choose a Membership Plan</h2>
+
+      <p class="section-intro">
+        Membership provides access to eligible platform features subject to
+        platform rules, profile eligibility, privacy settings, and applicable
+        service conditions.
+      </p>
+
+      <div class="plan-grid">
+
+        <div class="card plan-card">
+          <h3>Half-Yearly</h3>
+
+          <div class="price">₹5,500</div>
+
+          <div class="price-note">
+            Current Base Fee + applicable taxes, if any
+          </div>
+
+          <ul>
+            <li>Six-month membership period</li>
+            <li>Eligible profile browsing</li>
+            <li>Interest request functionality</li>
+            <li>Permitted contact visibility</li>
+            <li>Subject to profile and privacy rules</li>
+          </ul>
+
+          <a class="btn btn-primary" href="#contact">Contact Us to Register</a>
+        </div>
+
+
+        <div class="card plan-card recommended">
+          <div class="badge">BEST VALUE</div>
+
+          <h3>Yearly</h3>
+
+          <div class="price">₹10,000</div>
+
+          <div class="price-note">
+            Current Base Fee + applicable taxes, if any
+          </div>
+
+          <ul>
+            <li>Twelve-month membership period</li>
+            <li>Eligible profile browsing</li>
+            <li>Interest request functionality</li>
+            <li>Permitted contact visibility</li>
+            <li>Subject to profile and privacy rules</li>
+          </ul>
+
+          <a class="btn btn-primary" href="#contact">Contact Us to Register</a>
+        </div>
+
+      </div>
+
+      <div class="notice">
+        <strong>Pricing note:</strong>
+        The prices shown above are current base membership fees and may be revised
+        from time to time. Applicable discounts, taxes (if any), and the final
+        payable amount will be presented before payment confirmation. Membership
+        is not automatically renewed; members may choose whether to renew.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="eyebrow">Contact Us</div>
+
+      <h2>We Are Here to Help</h2>
+
+      <p class="section-intro">
+        Contact us for membership registration, platform assistance, profile
+        queries, service-related questions, or business enquiries.
+      </p>
+
+      <div class="contact-grid">
+
+        <div class="card contact-card">
+          <strong>Business</strong>
+          Kartikey Tech Services<br />
+          SainiSamajVivah
+        </div>
+
+        <div class="card contact-card">
+          <strong>Email</strong>
+          <a href="mailto:sudhir.sainikr@gmail.com">
+            sudhir.sainikr@gmail.com
+          </a>
+        </div>
+
+        <div class="card contact-card">
+          <strong>Phone</strong>
+          <a href="tel:+919760038400">
+            +91 9760038400
+          </a>
+        </div>
+
+      </div>
+
+      <div class="card" style="margin-top:22px;">
+        <strong style="color:#8f2038;">Business Address</strong><br /><br />
+        Kartikey Tech Services<br />
+        AGF-33, Ansal Town, Nr Bikanerwala, NH-58,<br />
+        Modipuram, Meerut - 250001,<br />
+        Uttar Pradesh, India
+      </div>
+    </div>
+  </section>
+
+
+  <!-- POLICIES -->
+  <section id="policies">
+    <div class="container">
+      <div class="eyebrow">Policies &amp; Terms</div>
+
+      <h2>Platform Policies</h2>
+
+      <p class="section-intro">
+        These policies explain how SainiSamajVivah services, membership,
+        payments, privacy and related matters are handled.
+      </p>
+
+
+      <div class="policy-grid">
+
+        <!-- PRIVACY -->
+        <article class="policy" id="privacy">
+          <h3>Privacy Policy</h3>
+
+          <p>
+            Kartikey Tech Services respects the privacy of users of
+            SainiSamajVivah. Information may be collected when users register,
+            create or manage matrimonial profiles, communicate with the platform,
+            purchase membership, or use platform features.
+          </p>
+
+          <p>
+            Information may include identity and contact details, matrimonial
+            profile information, community-related information, preferences,
+            photographs, membership information, transaction references, and
+            technical information required for operation and security.
+          </p>
+
+          <p>
+            Information is used for operating the matrimonial service,
+            administering memberships, providing eligible platform functionality,
+            supporting users, maintaining security, complying with applicable
+            obligations, and improving the service.
+          </p>
+
+          <p>
+            Payment transactions may be processed by authorised third-party
+            payment service providers. Kartikey Tech Services does not intend to
+            store users' full card credentials on this website.
+          </p>
+
+          <p>
+            Access to matrimonial information may depend on platform permissions,
+            profile settings, membership status, community configuration and
+            applicable privacy controls.
+          </p>
+        </article>
+
+
+        <!-- TERMS -->
+        <article class="policy" id="terms">
+          <h3>Terms &amp; Conditions</h3>
+
+          <p>
+            SainiSamajVivah is a digital matrimonial platform operated by Kartikey
+            Tech Services under the AllSamajVivah Control Center framework.
+          </p>
+
+          <ul>
+            <li>
+              Users must be legally eligible to use matrimonial services and must
+              provide accurate and appropriate information.
+            </li>
+            <li>
+              Users are responsible for the accuracy of profile information they
+              submit or manage.
+            </li>
+            <li>
+              Platform access and features may depend on membership status,
+              eligibility, permissions and platform rules.
+            </li>
+            <li>
+              Misrepresentation, misuse, harassment, unlawful activity or abuse
+              of the platform may result in restriction or termination of access.
+            </li>
+            <li>
+              The platform facilitates matrimonial introductions and does not
+              guarantee a match, engagement, marriage or any particular outcome.
+            </li>
+            <li>
+              Users and families are responsible for performing their own
+              appropriate verification and due diligence before making personal
+              or matrimonial decisions.
+            </li>
+          </ul>
+        </article>
+
+
+        <!-- REFUND -->
+        <article class="policy" id="refund">
+          <h3>Refund &amp; Cancellation Policy</h3>
+
+          <p>
+            Membership purchases are digital-service transactions. Refund or
+            cancellation requests are reviewed according to the circumstances of
+            the transaction and applicable platform rules.
+          </p>
+
+          <p>
+            Refund consideration may apply in circumstances such as duplicate
+            payments, payment collected where the corresponding service could not
+            be provided, or another case determined to be eligible after review.
+          </p>
+
+          <p>
+            Approval of a refund is not automatic. Each eligible request may be
+            reviewed against payment records, membership status, service usage,
+            and other relevant information.
+          </p>
+
+          <p>
+            Where a refund is approved, it will ordinarily be initiated through
+            the appropriate payment channel or original payment method where
+            applicable and supported by the payment service provider.
+          </p>
+
+          <p>
+            For refund or cancellation assistance, contact
+            <a href="mailto:sudhir.sainikr@gmail.com">
+              sudhir.sainikr@gmail.com
+            </a>.
+          </p>
+        </article>
+
+
+        <!-- DELIVERY -->
+        <article class="policy" id="delivery">
+          <h3>Service Delivery Policy</h3>
+
+          <p>
+            SainiSamajVivah provides digital matrimonial and membership services.
+            No physical product shipping is involved in standard membership
+            purchases.
+          </p>
+
+          <p>
+            For paid memberships, access or membership activation is processed
+            after successful payment verification and completion of the required
+            server-side processing and eligibility checks.
+          </p>
+
+          <p>
+            Available functionality may depend on membership status, profile
+            status, privacy settings, permissions and other applicable platform
+            rules.
+          </p>
+
+          <p>
+            If a user experiences difficulty after an eligible payment, support
+            can be requested through the contact details published on this
+            website.
+          </p>
+        </article>
+
+
+        <!-- PAYMENT -->
+        <article class="policy" id="payment">
+          <h3>Payment Policy</h3>
+
+          <p>
+            Membership pricing displayed on this website represents the current
+            base pricing and may be revised from time to time.
+          </p>
+
+          <p>
+            Any applicable discount, tax, adjustment and final payable amount
+            will be presented as part of the applicable transaction process before
+            payment confirmation.
+          </p>
+
+          <p>
+            When online payment functionality is enabled, payments may be
+            processed through authorised third-party payment service providers.
+            Availability of specific payment methods depends on the payment
+            service provider and the transaction environment.
+          </p>
+
+          <p>
+            A membership is treated as paid only after the corresponding payment
+            has been successfully verified through the applicable payment
+            processing mechanism.
+          </p>
+
+          <p>
+            Transaction records may be maintained for membership administration,
+            accounting, reconciliation, support, fraud prevention and other
+            legitimate business or legal purposes.
+          </p>
+        </article>
+
+
+        <!-- BUSINESS INFORMATION -->
+        <article class="policy">
+          <h3>Merchant / Business Information</h3>
+
+          <p>
+            <strong>Business / Operator:</strong><br />
+            Kartikey Tech Services
+          </p>
+
+          <p>
+            <strong>Service:</strong><br />
+            SainiSamajVivah
+          </p>
+
+          <p>
+            <strong>Framework:</strong><br />
+            AllSamajVivah Control Center
+          </p>
+
+          <p>
+            <strong>Email:</strong><br />
+            sudhir.sainikr@gmail.com
+          </p>
+
+          <p>
+            <strong>Phone:</strong><br />
+            +91 9760038400
+          </p>
+
+          <p>
+            <strong>Address:</strong><br />
+            AGF-33, Ansal Town, Nr Bikanerwala, NH-58,<br />
+            Modipuram, Meerut - 250001,<br />
+            Uttar Pradesh, India
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<footer>
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-title">SainiSamajVivah</div>
+
+        <p>
+          A community matrimonial platform operated by Kartikey Tech Services
+          under the AllSamajVivah Control Center framework.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-title">Important Links</div>
+
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#membership">Membership</a>
+          <a href="#contact">Contact</a>
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#terms">Terms &amp; Conditions</a>
+          <a href="#refund">Refund &amp; Cancellation</a>
+          <a href="#delivery">Service Delivery</a>
+          <a href="#payment">Payment Policy</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 Kartikey Tech Services. All rights reserved.
+      SainiSamajVivah operates under the AllSamajVivah Control Center framework.
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
