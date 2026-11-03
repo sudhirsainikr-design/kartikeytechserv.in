@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -101,7 +101,37 @@
     nav a:hover {
       color: var(--primary);
     }
+      .products-menu {
+          position: relative;
+          font-size: 14px;
+          font-weight: 600;
+          color: #453c3c;
+      }
 
+          .products-menu summary {
+              cursor: pointer;
+              list-style: none;
+          }
+
+      .products-options {
+          position: absolute;
+          top: 100%;
+          right: 0;
+          min-width: 240px;
+          padding: 12px;
+          background: white;
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          box-shadow: var(--shadow);
+          z-index: 1001;
+      }
+
+          .products-options span {
+              display: block;
+              padding: 8px;
+              color: var(--muted);
+              cursor: not-allowed;
+          }
     .hero {
       background:
         linear-gradient(135deg, rgba(255, 249, 240, 0.98), rgba(249, 235, 231, 0.98));
@@ -129,19 +159,19 @@
       line-height: 1.2;
     }
 
-    h1 {
-      font-size: clamp(40px, 6vw, 68px);
-      margin: 0 0 20px;
-    }
+      h1 {
+          font-size: clamp(32px, 4vw, 48px);
+          margin: 0 0 20px;
+      }
 
-    h2 {
-      font-size: clamp(30px, 4vw, 44px);
-      margin-top: 0;
-    }
+      h2 {
+          font-size: clamp(24px, 3vw, 32px);
+          margin-top: 0;
+      }
 
-    h3 {
-      font-size: 22px;
-    }
+      h3 {
+          font-size: 20px;
+      }
 
     .hero p {
       font-size: 19px;
@@ -215,6 +245,40 @@
     .feature-grid,
     .plan-grid,
     .policy-grid,
+    .policy-heading-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .policy-heading-row h2 {
+      margin: 0;
+    }
+
+    .about-heading-row h2 {
+      flex: 1 1 480px;
+      min-width: 0;
+    }
+
+    .policy-heading-row label {
+      margin-left: auto;
+      font-weight: 600;
+    }
+
+    .policy-heading-row select {
+      font: inherit;
+      padding: 5px 9px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: white;
+    }
+
+    .policy-grid[hidden] {
+      display: none !important;
+    }
+
     .contact-grid {
       display: grid;
       gap: 22px;
@@ -349,7 +413,7 @@
     .footer-title {
       color: white;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 22px;
+      font-size: 20px;
       margin-bottom: 10px;
     }
 
@@ -401,605 +465,770 @@
 
 <body>
 
-<header>
-  <div class="container nav">
-    <a href="#home" class="brand">
-      <span class="brand-main">SainiSamajVivah</span>
-      <span class="brand-sub">Operated by Kartikey Technology Services</span>
-    </a>
+    <header>
+        <div class="container nav">
+            <a href="#home" class="brand">
+                <span class="brand-main">SainiSamajVivah</span>
+                <span class="brand-sub">Operated by Kartikey Technology Services</span>
+            </a>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#membership">Membership</a>
-      <a href="#contact">Contact</a>
-      <a href="#policies">Policies</a>
-    </nav>
-  </div>
-</header>
-
-
-<main>
-
-  <!-- HOME -->
-  <section class="hero" id="home">
-    <div class="container hero-content">
-      <div class="eyebrow">Community Matrimonial Platform</div>
-
-      <h1>Meaningful Connections, Built Around Community</h1>
-
-      <p>
-        SainiSamajVivah is a structured digital matrimonial service currently
-        serving members of the Saini, Mali, Shakya, Kushwah and Maurya communities.
-        The platform operates under the AllSamajVivah Control Center framework
-        and is operated by Kartikey Technology Services.
-      </p>
-
-      <div class="button-row">
-        <a class="btn btn-primary" href="#membership">View Membership</a>
-        <a class="btn btn-secondary" href="#contact">Contact Us</a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="eyebrow">About Us</div>
-
-      <h2>Building Digital Platforms for Communities and Society</h2>
-
-      <div class="about-copy">
-        <p>
-          <strong>Kartikey Technology Services</strong> is an enterprise-oriented
-          technology and social development organization engaged in building
-          practical digital solutions and services across areas including
-          consultancy, research &amp; development, platform design, technology
-          implementation, and production-oriented digital initiatives.
-        </p>
-
-        <p>
-          One of its major social-platform initiatives is
-          <strong>AllSamajVivah Control Center</strong> — a broader matrimonial
-          technology framework designed to serve diverse societies and communities
-          irrespective of religion, caste, region, or other community-specific
-          structures.
-        </p>
-
-        <p>
-          The AllSamajVivah framework is designed so that individual communities
-          can operate matrimonial platforms aligned with their own identity,
-          traditions, preferences, and community requirements while benefiting
-          from a common technology and governance foundation.
-        </p>
-
-        <p>
-          <strong>SainiSamajVivah</strong> is the currently operational community
-          matrimonial platform under this framework, serving members of the
-          <strong>Saini, Mali, Shakya, Kushwah and Maurya communities</strong>
-          through a structured digital matrimonial service.
-        </p>
-
-        <p>
-          The broader vision of AllSamajVivah is to progressively support
-          additional community-specific matrimonial platforms, including intended
-          future services such as <strong>BrahminSamajVivah</strong> and
-          <strong>VaishySamajVivah</strong>, while maintaining appropriate privacy,
-          platform governance, community configuration, and technology standards.
-        </p>
-
-        <div class="operator-note">
-          SainiSamajVivah is operated by Kartikey Technology Services under the
-          AllSamajVivah Control Center framework.
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <details class="products-menu">
+                    <summary>Products</summary>
+                    <div class="products-options">
+                        <span>ASVCC Management — Coming Soon</span>
+                        <span>MMS – SainiSamajVivah — Coming Soon</span>
+                    </div>
+                </details>
+                <a href="#membership">Membership</a>
+                <a href="#contact">Contact</a>
+                <a href="#policies">Policies</a>
+            </nav>
         </div>
-      </div>
+    </header>
 
-      <div class="feature-grid">
-        <div class="card feature-card">
-          <h3>Saini Samaj</h3>
-          <p>Community Focus</p>
+
+    <main>
+
+        <!-- HOME -->
+        <section class="hero" id="home">
+            <div class="container hero-content">
+                <div class="eyebrow">Community Matrimonial Platform</div>
+
+                <h1>Meaningful Connections, Built Around Community</h1>
+
+                <p>
+                    SainiSamajVivah is a structured digital matrimonial service currently
+                    serving members of the Saini, Mali, Shakya, Kushwah and Maurya communities.
+                    The platform operates under the AllSamajVivah Control Center framework
+                    and is operated by Kartikey Technology Services.
+                </p>
+
+                <div class="button-row">
+                    <a class="btn btn-primary" href="#membership">View Membership</a>
+                    <a class="btn btn-secondary" href="#contact">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="container">
+                <div class="eyebrow">About Us</div>
+                <div class="policy-heading-row about-heading-row">
+                    <h2 id="aboutEnglishHeading">Building Digital Platforms for Communities and Society</h2>
+                    <h2 id="aboutHindiHeading" lang="hi" hidden>समुदायों और समाज के लिए डिजिटल प्लेटफ़ॉर्म का निर्माण</h2>
+                    <label for="aboutLanguageToggle">Language:</label>
+                    <select id="aboutLanguageToggle" aria-label="About Us language">
+                        <option value="en">English</option>
+                        <option value="hi">हिन्दी</option>
+                    </select>
+                </div>
+
+                <div class="about-copy" id="aboutEnglish">
+                    <p>
+                        <strong>Kartikey Technology Services</strong> is an enterprise-oriented
+                        technology and social development organization engaged in building
+                        practical digital solutions and services across areas including
+                        consultancy, research &amp; development, platform design, technology
+                        implementation, and production-oriented digital initiatives.
+                    </p>
+
+                    <p>
+                        One of its major social-platform initiatives is
+                        <strong>AllSamajVivah Control Center</strong> — a broader matrimonial
+                        technology framework designed to serve diverse societies and communities
+                        irrespective of religion, caste, region, or other community-specific
+                        structures.
+                    </p>
+
+                    <p>
+                        The AllSamajVivah framework is designed so that individual communities
+                        can operate matrimonial platforms aligned with their own identity,
+                        traditions, preferences, and community requirements while benefiting
+                        from a common technology and governance foundation.
+                    </p>
+
+                    <p>
+                        <strong>SainiSamajVivah</strong> is the currently operational community
+                        matrimonial platform under this framework, serving members of the
+                        <strong>Saini, Mali, Shakya, Kushwah and Maurya communities</strong>
+                        through a structured digital matrimonial service.
+                    </p>
+
+                    <p>
+                        The broader vision of AllSamajVivah is to progressively support
+                        additional community-specific matrimonial platforms, including intended
+                        future services such as <strong>BrahminSamajVivah</strong> and
+                        <strong>VaishySamajVivah</strong>, while maintaining appropriate privacy,
+                        platform governance, community configuration, and technology standards.
+                    </p>
+
+                    <div class="operator-note">
+                        SainiSamajVivah is operated by Kartikey Technology Services under the
+                        AllSamajVivah Control Center framework.
+                    </div>
+                </div>
+
+                <div class="about-copy" id="aboutHindi" lang="hi" hidden>
+
+                    <p>
+                        <strong>कार्तिकेय टेक्नोलॉजी सर्विसेज</strong> एक प्रौद्योगिकी एवं
+                        सामाजिक विकास संगठन है, जो परामर्श, अनुसंधान एवं विकास,
+                        डिजिटल प्लेटफ़ॉर्म डिज़ाइन, तकनीकी कार्यान्वयन तथा
+                        उत्पादन-संबंधी डिजिटल पहलों में व्यावहारिक समाधान और सेवाएँ
+                        विकसित करता है।
+                    </p>
+
+                    <p>
+                        इसकी प्रमुख सामाजिक पहलों में से एक
+                        <strong>ऑलसमाजविवाह कंट्रोल सेंटर</strong> है। यह एक व्यापक
+                        वैवाहिक प्रौद्योगिकी ढाँचा है, जिसका उद्देश्य धर्म, जाति,
+                        क्षेत्र या समुदाय के आधार पर भेदभाव किए बिना विभिन्न समाजों
+                        और समुदायों को सेवाएँ प्रदान करना है।
+                    </p>
+
+                    <p>
+                        ऑलसमाजविवाह की संरचना इस प्रकार बनाई गई है कि अलग-अलग
+                        समुदाय अपनी पहचान, परंपराओं, प्राथमिकताओं और आवश्यकताओं
+                        के अनुरूप वैवाहिक प्लेटफ़ॉर्म संचालित कर सकें तथा साझा
+                        तकनीकी और प्रशासनिक व्यवस्था का लाभ उठा सकें।
+                    </p>
+
+                    <p>
+                        <strong>सैनीसमाजविवाह</strong> इस ढाँचे के अंतर्गत वर्तमान में
+                        संचालित सामुदायिक वैवाहिक प्लेटफ़ॉर्म है, जो
+                        <strong>सैनी, माली, शाक्य, कुशवाह और मौर्य समुदायों</strong>
+                        के सदस्यों को व्यवस्थित डिजिटल वैवाहिक सेवाएँ प्रदान करता है।
+                    </p>
+
+                    <p>
+                        ऑलसमाजविवाह का व्यापक उद्देश्य भविष्य में अन्य समुदायों के
+                        लिए भी वैवाहिक प्लेटफ़ॉर्म विकसित करना है, जिनमें प्रस्तावित
+                        <strong>ब्राह्मणसमाजविवाह</strong> और
+                        <strong>वैश्यसमाजविवाह</strong> जैसी सेवाएँ शामिल हो सकती हैं।
+                        इस विकास में गोपनीयता, प्लेटफ़ॉर्म संचालन, सामुदायिक
+                        व्यवस्थाओं और तकनीकी मानकों का ध्यान रखा जाएगा।
+                    </p>
+
+                    <div class="operator-note">
+                        सैनीसमाजविवाह का संचालन कार्तिकेय टेक्नोलॉजी सर्विसेज द्वारा
+                        ऑलसमाजविवाह कंट्रोल सेंटर के अंतर्गत किया जाता है।
+                    </div>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="card feature-card">
+                        <h3 class="card-en">Saini Samaj</h3>
+                        <h3 class="card-hi" lang="hi" hidden>सैनी समाज</h3>
+                        <p class="card-en">Community Focus</p>
+                        <p class="card-hi" lang="hi" hidden>समुदाय केंद्रित</p>
+                    </div>
+
+                    <div class="card feature-card">
+                        <h3 class="card-en">Digital</h3>
+                        <h3 class="card-hi" lang="hi" hidden>डिजिटल</h3>
+                        <p class="card-en">Structured Online Platform</p>
+                        <p class="card-hi" lang="hi" hidden>व्यवस्थित ऑनलाइन प्लेटफ़ॉर्म</p>
+                    </div>
+
+                    <div class="card feature-card">
+                        <h3 class="card-en">Secure</h3>
+                        <h3 class="card-hi" lang="hi" hidden>सुरक्षित</h3>
+                        <p class="card-en">Privacy Controlled</p>
+                        <p class="card-hi" lang="hi" hidden>गोपनीयता नियंत्रित</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- MEMBERSHIP -->
+        <section id="membership">
+            <div class="container">
+                <div class="eyebrow">Membership</div>
+
+                <h2>Memberships &amp; Services</h2>
+
+                <p class="section-intro">
+                    Kartikey Technology Services offers matrimonial memberships and related
+                    support services through SainiSamajVivah. Availability, eligibility,
+                    platform rules, privacy settings, and applicable service conditions
+                    apply to each offering.
+                </p>
+
+                <div class="plan-grid">
+
+                    <div class="card plan-card">
+                        <h3>Half-Yearly</h3>
+
+                        <div class="price">₹5,500</div>
+
+                        <div class="price-note">
+                            Current Base Fee + applicable taxes, if any
+                        </div>
+
+                        <ul>
+                            <li>Six-month membership period</li>
+                            <li>Eligible profile browsing</li>
+                            <li>Interest request functionality</li>
+                            <li>Permitted contact visibility</li>
+                            <li>Subject to profile and privacy rules</li>
+                        </ul>
+
+                        <a class="btn btn-primary" href="#contact">Contact Us to Register</a>
+                    </div>
+
+
+                    <div class="card plan-card recommended">
+                        <div class="badge">BEST VALUE</div>
+
+                        <h3>Yearly</h3>
+
+                        <div class="price">₹10,000</div>
+
+                        <div class="price-note">
+                            Current Base Fee + applicable taxes, if any
+                        </div>
+
+                        <ul>
+                            <li>Twelve-month membership period</li>
+                            <li>Eligible profile browsing</li>
+                            <li>Interest request functionality</li>
+                            <li>Permitted contact visibility</li>
+                            <li>Subject to profile and privacy rules</li>
+                        </ul>
+
+                        <a class="btn btn-primary" href="#contact">Contact Us to Register</a>
+                    </div>
+
+
+                    <div class="card plan-card">
+                        <h3>Community Partner Membership</h3>
+
+                        <div class="price">₹5,000</div>
+
+                        <div class="price-note">
+                            Current Membership Fee + applicable taxes, if any
+                        </div>
+
+                        <ul>
+                            <li>For eligible Community Partner participation</li>
+                            <li>Subject to Community Partner approval and platform rules</li>
+                            <li>Access to permitted Community Partner functions</li>
+                            <li>Applicable verification and administrative controls apply</li>
+                        </ul>
+
+                        <a class="btn btn-primary" href="#contact">Contact Us for Details</a>
+                    </div>
+
+
+                    <div class="card plan-card">
+                        <h3>Profile Setup Assistance</h3>
+
+                        <div class="price">₹1,000</div>
+
+                        <div class="price-note">
+                            Current Service Fee + applicable taxes, if any
+                        </div>
+
+                        <ul>
+                            <li>Assistance with creating or completing a matrimonial profile</li>
+                            <li>Guidance for entering profile details and preferences</li>
+                            <li>Support for organising and uploading permitted profile information</li>
+                            <li>No guarantee of profile approval, match, engagement, or marriage</li>
+                        </ul>
+
+                        <a class="btn btn-primary" href="#contact">Request Assistance</a>
+                    </div>
+
+                </div>
+
+                <div class="notice">
+                    <strong>Pricing &amp; Commercial Policy:</strong>
+                    The prices displayed on this website are the current published prices and
+                    may be revised from time to time by Kartikey Technology Services in
+                    accordance with its marketing and commercial policies. Any applicable
+                    discounts, promotional offers, taxes (if any), and the final payable
+                    amount presented at the time of purchase or confirmation will apply to
+                    that transaction. Matrimonial memberships are not automatically renewed;
+                    members may choose whether to renew.
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="container">
+                <div class="eyebrow">Contact Us</div>
+
+                <h2>We Are Here to Help</h2>
+
+                <p class="section-intro">
+                    Contact us for membership registration, platform assistance, profile
+                    queries, service-related questions, or business enquiries.
+                </p>
+
+                <div class="contact-grid">
+
+                    <div class="card contact-card">
+                        <strong>Business</strong>
+                        Kartikey Technology Services<br />
+                        SainiSamajVivah
+                    </div>
+
+                    <div class="card contact-card">
+                        <strong>Email</strong>
+                        <a href="mailto:sudhir.sainikr@gmail.com">
+                            sudhir.sainikr@gmail.com
+                        </a>
+                    </div>
+
+                    <div class="card contact-card">
+                        <strong>Phone</strong>
+                        <a href="tel:+919760038400">
+                            +91 9760038400
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="card" style="margin-top:22px;">
+                    <strong style="color:#8f2038;">Business Address</strong><br /><br />
+                    Kartikey Technology Services<br />
+                    AGF-33, Ansal Town, Nr Bikanerwala, NH-58,<br />
+                    Modipuram, Meerut - 250001,<br />
+                    Uttar Pradesh, India
+                </div>
+            </div>
+        </section>
+
+
+        <!-- POLICIES -->
+        <section id="policies">
+            <div class="container">
+                <div class="eyebrow">Policies &amp; Terms</div>
+
+                <div class="policy-heading-row">
+                    <h2>Platform Policies</h2>
+                    <label for="policiesLanguage">Language:</label>
+                    <select id="policiesLanguage" aria-label="Platform Policies language">
+                        <option value="en">English</option>
+                        <option value="hi">हिन्दी</option>
+                    </select>
+                </div>
+
+                <p class="section-intro">
+                    These policies explain how SainiSamajVivah services, membership,
+                    payments, privacy and related matters are handled.
+                </p>
+
+
+                <div class="policy-grid" id="policiesEnglish">
+
+                    <!-- PRIVACY -->
+                    <article class="policy" id="privacy">
+                        <h3>Privacy Policy</h3>
+
+                        <p>
+                            Kartikey Technology Services respects the privacy of users of
+                            SainiSamajVivah. Information may be collected when users register,
+                            create or manage matrimonial profiles, communicate with the platform,
+                            purchase membership, or use platform features.
+                        </p>
+
+                        <p>
+                            Information may include identity and contact details, matrimonial
+                            profile information, community-related information, preferences,
+                            photographs, membership information, transaction references, and
+                            technical information required for operation and security.
+                        </p>
+
+                        <p>
+                            Information is used for operating the matrimonial service,
+                            administering memberships, providing eligible platform functionality,
+                            supporting users, maintaining security, complying with applicable
+                            obligations, and improving the service.
+                        </p>
+
+                        <p>
+                            Payment transactions may be processed by authorised third-party
+                            payment service providers. Kartikey Technology Services does not intend to
+                            store users' full card credentials on this website.
+                        </p>
+
+                        <p>
+                            Access to matrimonial information may depend on platform permissions,
+                            profile settings, membership status, community configuration and
+                            applicable privacy controls.
+                        </p>
+                    </article>
+
+
+                    <!-- TERMS -->
+                    <article class="policy" id="terms">
+                        <h3>Terms &amp; Conditions</h3>
+
+                        <p>
+                            This website is operated by <strong>Kartikey Technology Services</strong>.
+                            SainiSamajVivah is a digital matrimonial platform operated under the
+                            AllSamajVivah Control Center framework.
+                        </p>
+
+                        <ul>
+                            <li>
+                                Users must be legally eligible to use matrimonial services and must
+                                provide accurate and appropriate information.
+                            </li>
+                            <li>
+                                Users are responsible for the accuracy of profile information they
+                                submit or manage.
+                            </li>
+                            <li>
+                                Platform access and features may depend on membership status,
+                                eligibility, permissions and platform rules.
+                            </li>
+                            <li>
+                                Misrepresentation, misuse, harassment, unlawful activity or abuse
+                                of the platform may result in restriction or termination of access.
+                            </li>
+                            <li>
+                                The platform facilitates matrimonial introductions and does not
+                                guarantee a match, engagement, marriage or any particular outcome.
+                            </li>
+                            <li>
+                                Users and families are responsible for performing their own
+                                appropriate verification and due diligence before making personal
+                                or matrimonial decisions.
+                            </li>
+                        </ul>
+                    </article>
+
+
+                    <!-- RETURN & REFUND -->
+                    <article class="policy" id="refund">
+                        <h3>Return &amp; Refund Policy</h3>
+
+                        <p>
+                            SainiSamajVivah provides digital memberships and related digital
+                            services. Since no physical products are supplied under these standard
+                            services, physical product returns are not applicable.
+                        </p>
+
+                        <p>
+                            Refund consideration may apply in circumstances such as duplicate
+                            payments, payment collected where the corresponding service could not
+                            be provided, failed activation after successful payment verification,
+                            or another case determined to be eligible after review.
+                        </p>
+
+                        <p>
+                            Approval of a refund is not automatic. Each eligible request may be
+                            reviewed against payment records, membership or service status,
+                            activation status, service usage, and other relevant information.
+                        </p>
+
+                        <p>
+                            Where a refund is approved, it will ordinarily be initiated to the
+                            original payment method or original payment channel used for the
+                            transaction, where supported by the applicable payment service provider.
+                        </p>
+
+                        <p>
+                            Approved refunds are generally initiated within 5 to 7 business days
+                            after approval. The time taken for the refunded amount to reflect in
+                            the user's account may additionally depend on the payment service
+                            provider, bank, card issuer, or other financial institution involved.
+                        </p>
+
+                        <p>
+                            For refund assistance, contact
+                            <a href="mailto:sudhir.sainikr@gmail.com">
+                                sudhir.sainikr@gmail.com
+                            </a>.
+                        </p>
+                    </article>
+
+
+                    <!-- CANCELLATION -->
+                    <article class="policy" id="cancellation">
+                        <h3>Cancellation Policy</h3>
+
+                        <p>
+                            Cancellation requests for an eligible membership or related paid
+                            digital service may be submitted within 24 hours of payment, provided
+                            the membership or related service has not been substantially used,
+                            consumed, activated, or delivered.
+                        </p>
+
+                        <p>
+                            Each cancellation request is reviewed against the transaction record,
+                            membership or service status, activation status, service usage, and
+                            applicable platform rules.
+                        </p>
+
+                        <p>
+                            Where a cancellation request is approved and a refund is applicable,
+                            the refund will be handled in accordance with the Return &amp; Refund
+                            Policy published on this website.
+                        </p>
+
+                        <p>
+                            For cancellation assistance, contact
+                            <a href="mailto:sudhir.sainikr@gmail.com">
+                                sudhir.sainikr@gmail.com
+                            </a>.
+                        </p>
+                    </article>
+
+
+                    <!-- DELIVERY -->
+                    <article class="policy" id="delivery">
+                        <h3>Service Delivery Policy</h3>
+
+                        <p>
+                            SainiSamajVivah provides digital matrimonial memberships and related
+                            support services. No physical product shipping is involved in these
+                            standard digital-service purchases.
+                        </p>
+
+                        <p>
+                            For paid memberships or services, the applicable membership access,
+                            service delivery, or activation is processed after successful payment
+                            verification and completion of the required server-side processing,
+                            eligibility, and administrative checks.
+                        </p>
+
+                        <p>
+                            Available functionality may depend on membership status, profile
+                            status, privacy settings, permissions and other applicable platform
+                            rules.
+                        </p>
+
+                        <p>
+                            If a user experiences difficulty after an eligible payment, support
+                            can be requested through the contact details published on this
+                            website.
+                        </p>
+                    </article>
+
+
+                    <!-- PAYMENT -->
+                    <article class="policy" id="payment">
+                        <h3>Payment Policy</h3>
+
+                        <p>
+                            Membership and service pricing displayed on this website represents
+                            the current published pricing and may be revised from time to time in
+                            accordance with Kartikey Technology Services' marketing and commercial
+                            policies.
+                        </p>
+
+                        <p>
+                            Any applicable discount, tax, adjustment and final payable amount
+                            will be presented as part of the applicable transaction process before
+                            payment confirmation.
+                        </p>
+
+                        <p>
+                            When online payment functionality is enabled, payments may be
+                            processed through authorised third-party payment service providers.
+                            Availability of specific payment methods depends on the payment
+                            service provider and the transaction environment.
+                        </p>
+
+                        <p>
+                            A membership or paid service is treated as paid only after the
+                            corresponding payment has been successfully verified through the
+                            applicable payment processing mechanism.
+                        </p>
+
+                        <p>
+                            Transaction records may be maintained for membership administration,
+                            accounting, reconciliation, support, fraud prevention and other
+                            legitimate business or legal purposes.
+                        </p>
+                    </article>
+
+
+                    <!-- BUSINESS INFORMATION -->
+                    <article class="policy">
+                        <h3>Merchant / Business Information</h3>
+
+                        <p>
+                            <strong>Business / Operator:</strong><br />
+                            Kartikey Technology Services
+                        </p>
+
+                        <p>
+                            <strong>Service:</strong><br />
+                            SainiSamajVivah
+                        </p>
+
+                        <p>
+                            <strong>Framework:</strong><br />
+                            AllSamajVivah Control Center
+                        </p>
+
+                        <p>
+                            <strong>Email:</strong><br />
+                            sudhir.sainikr@gmail.com
+                        </p>
+
+                        <p>
+                            <strong>Phone:</strong><br />
+                            +91 9760038400
+                        </p>
+
+                        <p>
+                            <strong>Address:</strong><br />
+                            AGF-33, Ansal Town, Nr Bikanerwala, NH-58,<br />
+                            Modipuram, Meerut - 250001,<br />
+                            Uttar Pradesh, India
+                        </p>
+                    </article>
+
+                </div>
+
+                <div class="policy-grid" id="policiesHindi" lang="hi" hidden>
+                    <article class="policy">
+                        <h3>गोपनीयता नीति</h3>
+                        <p>कार्तिकेय टेक्नोलॉजी सर्विसेज सैनीसमाजविवाह के उपयोगकर्ताओं की गोपनीयता का सम्मान करती है। उपयोगकर्ता के पंजीकरण, वैवाहिक प्रोफ़ाइल बनाने या प्रबंधित करने, प्लेटफ़ॉर्म से संपर्क करने, सदस्यता खरीदने या अन्य सुविधाओं का उपयोग करने पर जानकारी एकत्र की जा सकती है।</p>
+                        <p>इस जानकारी में पहचान और संपर्क विवरण, वैवाहिक प्रोफ़ाइल का विवरण, समुदाय से जुड़ी जानकारी, प्राथमिकताएँ, फ़ोटो, सदस्यता की जानकारी, लेन-देन संदर्भ और संचालन व सुरक्षा के लिए आवश्यक तकनीकी जानकारी शामिल हो सकती है।</p>
+                        <p>जानकारी का उपयोग वैवाहिक सेवा चलाने, सदस्यताओं का प्रशासन करने, पात्र सुविधाएँ उपलब्ध कराने, उपयोगकर्ताओं की सहायता करने, सुरक्षा बनाए रखने, लागू दायित्वों का पालन करने और सेवा को बेहतर बनाने के लिए किया जाता है।</p>
+                        <p>भुगतान लेन-देन अधिकृत तृतीय-पक्ष भुगतान सेवा प्रदाताओं द्वारा संसाधित किए जा सकते हैं। कार्तिकेय टेक्नोलॉजी सर्विसेज इस वेबसाइट पर उपयोगकर्ताओं के पूरे कार्ड विवरण संग्रहित करने का इरादा नहीं रखती।</p>
+                        <p>वैवाहिक जानकारी तक पहुँच प्लेटफ़ॉर्म अनुमतियों, प्रोफ़ाइल सेटिंग, सदस्यता स्थिति, समुदाय कॉन्फ़िगरेशन तथा लागू गोपनीयता नियंत्रणों पर निर्भर हो सकती है।</p>
+                    </article>
+                    <article class="policy">
+                        <h3>नियम एवं शर्तें</h3>
+                        <p>यह वेबसाइट <strong>कार्तिकेय टेक्नोलॉजी सर्विसेज</strong> द्वारा संचालित है। सैनीसमाजविवाह, ऑलसमाजविवाह कंट्रोल सेंटर ढाँचे के अंतर्गत संचालित एक डिजिटल वैवाहिक प्लेटफ़ॉर्म है।</p>
+                        <ul>
+                            <li>उपयोगकर्ता वैवाहिक सेवाओं के उपयोग के लिए कानूनी रूप से पात्र हों और सही तथा उपयुक्त जानकारी प्रदान करें।</li>
+                            <li>उपयोगकर्ता अपनी प्रस्तुत या प्रबंधित प्रोफ़ाइल की जानकारी की शुद्धता के लिए स्वयं जिम्मेदार हैं।</li>
+                            <li>प्लेटफ़ॉर्म पर पहुँच और सुविधाएँ सदस्यता स्थिति, पात्रता, अनुमतियों एवं प्लेटफ़ॉर्म नियमों पर निर्भर हो सकती हैं।</li>
+                            <li>गलत जानकारी देना, दुरुपयोग, उत्पीड़न, गैरकानूनी गतिविधि अथवा प्लेटफ़ॉर्म का अनुचित उपयोग पहुँच सीमित या समाप्त किए जाने का कारण बन सकता है।</li>
+                            <li>यह प्लेटफ़ॉर्म वैवाहिक परिचय की सुविधा देता है; यह मेल, सगाई, विवाह या किसी विशेष परिणाम की गारंटी नहीं देता।</li>
+                            <li>व्यक्तिगत या वैवाहिक निर्णय लेने से पहले उपयोगकर्ता और परिवार अपनी उचित जाँच-पड़ताल एवं सत्यापन स्वयं करें।</li>
+                        </ul>
+                    </article>
+                    <article class="policy">
+                        <h3>वापसी एवं धनवापसी नीति</h3>
+                        <p>सैनीसमाजविवाह डिजिटल सदस्यताएँ और संबंधित डिजिटल सेवाएँ प्रदान करता है। इन सामान्य सेवाओं में कोई भौतिक उत्पाद नहीं दिया जाता, इसलिए भौतिक वस्तु की वापसी लागू नहीं होती।</p>
+                        <p>डुप्लिकेट भुगतान, भुगतान के बाद संबंधित सेवा न दी जा सकना, सफल भुगतान सत्यापन के बाद सक्रियण विफल होना, या समीक्षा में पात्र पाया गया कोई अन्य मामला धनवापसी के विचार के अंतर्गत आ सकता है।</p>
+                        <p>धनवापसी की स्वीकृति स्वतः नहीं होती। प्रत्येक पात्र अनुरोध की भुगतान अभिलेख, सदस्यता या सेवा की स्थिति, सक्रियण स्थिति, सेवा उपयोग तथा अन्य प्रासंगिक जानकारी के आधार पर समीक्षा की जा सकती है।</p>
+                        <p>स्वीकृत धनवापसी सामान्यतः उसी मूल भुगतान माध्यम या चैनल से आरंभ की जाएगी जिससे लेन-देन किया गया था, बशर्ते संबंधित भुगतान सेवा प्रदाता इसे समर्थन देता हो।</p>
+                        <p>स्वीकृति के बाद सामान्यतः <strong>5 से 7 कार्य-दिवसों</strong> में धनवापसी की प्रक्रिया आरंभ की जाती है। राशि उपयोगकर्ता के खाते में दिखाई देने का समय संबंधित भुगतान सेवा प्रदाता, बैंक, कार्ड जारीकर्ता या अन्य वित्तीय संस्था पर अतिरिक्त रूप से निर्भर कर सकता है।</p>
+                        <p>धनवापसी सहायता के लिए <a href="mailto:sudhir.sainikr@gmail.com">sudhir.sainikr@gmail.com</a> पर संपर्क करें।</p>
+                    </article>
+                    <article class="policy">
+                        <h3>रद्दीकरण नीति</h3>
+                        <p>पात्र सदस्यता या संबंधित सशुल्क डिजिटल सेवा के लिए भुगतान के <strong>24 घंटे</strong> के भीतर रद्दीकरण अनुरोध किया जा सकता है, बशर्ते सदस्यता या सेवा का पर्याप्त उपयोग, उपभोग, सक्रियण या वितरण न हुआ हो।</p>
+                        <p>प्रत्येक अनुरोध की लेन-देन अभिलेख, सदस्यता या सेवा स्थिति, सक्रियण स्थिति, सेवा उपयोग एवं लागू प्लेटफ़ॉर्म नियमों के आधार पर समीक्षा की जाती है।</p>
+                        <p>यदि रद्दीकरण स्वीकृत हो और धनवापसी लागू हो, तो धनवापसी इस वेबसाइट पर प्रकाशित वापसी एवं धनवापसी नीति के अनुसार की जाएगी।</p>
+                        <p>रद्दीकरण सहायता के लिए <a href="mailto:sudhir.sainikr@gmail.com">sudhir.sainikr@gmail.com</a> पर संपर्क करें।</p>
+                    </article>
+                    <article class="policy">
+                        <h3>सेवा वितरण नीति</h3>
+                        <p>सैनीसमाजविवाह डिजिटल वैवाहिक सदस्यताएँ और संबंधित सहायता सेवाएँ प्रदान करता है। इन सामान्य डिजिटल सेवाओं की खरीद में कोई भौतिक वस्तु भेजना शामिल नहीं है।</p>
+                        <p>सशुल्क सदस्यता या सेवा की पहुँच, वितरण या सक्रियण सफल भुगतान सत्यापन तथा आवश्यक सर्वर-स्तरीय प्रक्रिया, पात्रता जाँच और प्रशासनिक जाँच पूरी होने के बाद संसाधित किया जाता है।</p>
+                        <p>उपलब्ध सुविधाएँ सदस्यता स्थिति, प्रोफ़ाइल स्थिति, गोपनीयता सेटिंग, अनुमतियों तथा अन्य लागू प्लेटफ़ॉर्म नियमों पर निर्भर हो सकती हैं।</p>
+                        <p>पात्र भुगतान के बाद कठिनाई होने पर इस वेबसाइट पर प्रकाशित संपर्क विवरण से सहायता माँगी जा सकती है।</p>
+                    </article>
+                    <article class="policy">
+                        <h3>भुगतान नीति</h3>
+                        <p>इस वेबसाइट पर दिखाए गए सदस्यता एवं सेवा शुल्क वर्तमान प्रकाशित मूल्य हैं और कार्तिकेय टेक्नोलॉजी सर्विसेज की विपणन तथा वाणिज्यिक नीतियों के अनुसार समय-समय पर बदले जा सकते हैं।</p>
+                        <p>लागू छूट, कर, समायोजन और अंतिम देय राशि भुगतान पुष्टि से पहले संबंधित लेन-देन प्रक्रिया में प्रदर्शित की जाएगी।</p>
+                        <p>ऑनलाइन भुगतान सुविधा सक्षम होने पर भुगतान अधिकृत तृतीय-पक्ष भुगतान सेवा प्रदाताओं के माध्यम से संसाधित किए जा सकते हैं। विशिष्ट भुगतान माध्यमों की उपलब्धता भुगतान सेवा प्रदाता और लेन-देन परिवेश पर निर्भर करती है।</p>
+                        <p>सदस्यता या सशुल्क सेवा को तभी भुगतान-प्राप्त माना जाएगा जब संबंधित भुगतान को लागू भुगतान प्रणाली के माध्यम से सफलतापूर्वक सत्यापित कर लिया जाए।</p>
+                        <p>सदस्यता प्रशासन, लेखांकन, मिलान, सहायता, धोखाधड़ी की रोकथाम तथा अन्य वैध व्यावसायिक या कानूनी प्रयोजनों के लिए लेन-देन अभिलेख रखे जा सकते हैं।</p>
+                    </article>
+                    <article class="policy">
+                        <h3>व्यापारी / व्यवसाय संबंधी जानकारी</h3>
+                        <p><strong>व्यवसाय / संचालक:</strong><br />Kartikey Technology Services</p>
+                        <p><strong>सेवा:</strong><br />SainiSamajVivah</p>
+                        <p><strong>ढाँचा:</strong><br />AllSamajVivah Control Center</p>
+                        <p><strong>ईमेल:</strong><br />sudhir.sainikr@gmail.com</p>
+                        <p><strong>फ़ोन:</strong><br />+91 9760038400</p>
+                        <p><strong>पता:</strong><br />AGF-33, Ansal Town, Nr Bikanerwala, NH-58,<br />Modipuram, Meerut - 250001,<br />Uttar Pradesh, India</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer>
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div>
+                    <div class="footer-title">SainiSamajVivah</div>
+
+                    <p>
+                        A community matrimonial platform operated by Kartikey Technology Services
+                        under the AllSamajVivah Control Center framework.
+                    </p>
+                </div>
+
+                <div>
+                    <div class="footer-title">Important Links</div>
+
+                    <div class="footer-links">
+                        <a href="#about">About</a>
+                        <a href="#membership">Membership</a>
+                        <a href="#contact">Contact</a>
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">Terms &amp; Conditions</a>
+                        <a href="#refund">Return &amp; Refund Policy</a>
+                        <a href="#cancellation">Cancellation Policy</a>
+                        <a href="#delivery">Service Delivery</a>
+                        <a href="#payment">Payment Policy</a>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="copyright">
+                © 2026 Kartikey Technology Services. All rights reserved.
+                SainiSamajVivah operates under the AllSamajVivah Control Center framework.
+            </div>
+
         </div>
-
-        <div class="card feature-card">
-          <h3>Digital</h3>
-          <p>Structured Online Platform</p>
-        </div>
-
-        <div class="card feature-card">
-          <h3>Secure</h3>
-          <p>Privacy Controlled</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- MEMBERSHIP -->
-  <section id="membership">
-    <div class="container">
-      <div class="eyebrow">Membership</div>
-
-      <h2>Memberships &amp; Services</h2>
-
-      <p class="section-intro">
-        Kartikey Technology Services offers matrimonial memberships and related
-        support services through SainiSamajVivah. Availability, eligibility,
-        platform rules, privacy settings, and applicable service conditions
-        apply to each offering.
-      </p>
-
-      <div class="plan-grid">
-
-        <div class="card plan-card">
-          <h3>Half-Yearly</h3>
-
-          <div class="price">₹5,500</div>
-
-          <div class="price-note">
-            Current Base Fee + applicable taxes, if any
-          </div>
-
-          <ul>
-            <li>Six-month membership period</li>
-            <li>Eligible profile browsing</li>
-            <li>Interest request functionality</li>
-            <li>Permitted contact visibility</li>
-            <li>Subject to profile and privacy rules</li>
-          </ul>
-
-          <a class="btn btn-primary" href="#contact">Contact Us to Register</a>
-        </div>
-
-
-        <div class="card plan-card recommended">
-          <div class="badge">BEST VALUE</div>
-
-          <h3>Yearly</h3>
-
-          <div class="price">₹10,000</div>
-
-          <div class="price-note">
-            Current Base Fee + applicable taxes, if any
-          </div>
-
-          <ul>
-            <li>Twelve-month membership period</li>
-            <li>Eligible profile browsing</li>
-            <li>Interest request functionality</li>
-            <li>Permitted contact visibility</li>
-            <li>Subject to profile and privacy rules</li>
-          </ul>
-
-          <a class="btn btn-primary" href="#contact">Contact Us to Register</a>
-        </div>
-
-
-        <div class="card plan-card">
-          <h3>Community Partner Membership</h3>
-
-          <div class="price">₹5,000</div>
-
-          <div class="price-note">
-            Current Membership Fee + applicable taxes, if any
-          </div>
-
-          <ul>
-            <li>For eligible Community Partner participation</li>
-            <li>Subject to Community Partner approval and platform rules</li>
-            <li>Access to permitted Community Partner functions</li>
-            <li>Applicable verification and administrative controls apply</li>
-          </ul>
-
-          <a class="btn btn-primary" href="#contact">Contact Us for Details</a>
-        </div>
-
-
-        <div class="card plan-card">
-          <h3>Profile Setup Assistance</h3>
-
-          <div class="price">₹1,000</div>
-
-          <div class="price-note">
-            Current Service Fee + applicable taxes, if any
-          </div>
-
-          <ul>
-            <li>Assistance with creating or completing a matrimonial profile</li>
-            <li>Guidance for entering profile details and preferences</li>
-            <li>Support for organising and uploading permitted profile information</li>
-            <li>No guarantee of profile approval, match, engagement, or marriage</li>
-          </ul>
-
-          <a class="btn btn-primary" href="#contact">Request Assistance</a>
-        </div>
-
-      </div>
-
-      <div class="notice">
-        <strong>Pricing &amp; Commercial Policy:</strong>
-        The prices displayed on this website are the current published prices and
-        may be revised from time to time by Kartikey Technology Services in
-        accordance with its marketing and commercial policies. Any applicable
-        discounts, promotional offers, taxes (if any), and the final payable
-        amount presented at the time of purchase or confirmation will apply to
-        that transaction. Matrimonial memberships are not automatically renewed;
-        members may choose whether to renew.
-      </div>
-    </div>
-  </section>
-
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="eyebrow">Contact Us</div>
-
-      <h2>We Are Here to Help</h2>
-
-      <p class="section-intro">
-        Contact us for membership registration, platform assistance, profile
-        queries, service-related questions, or business enquiries.
-      </p>
-
-      <div class="contact-grid">
-
-        <div class="card contact-card">
-          <strong>Business</strong>
-          Kartikey Technology Services<br />
-          SainiSamajVivah
-        </div>
-
-        <div class="card contact-card">
-          <strong>Email</strong>
-          <a href="mailto:sudhir.sainikr@gmail.com">
-            sudhir.sainikr@gmail.com
-          </a>
-        </div>
-
-        <div class="card contact-card">
-          <strong>Phone</strong>
-          <a href="tel:+919760038400">
-            +91 9760038400
-          </a>
-        </div>
-
-      </div>
-
-      <div class="card" style="margin-top:22px;">
-        <strong style="color:#8f2038;">Business Address</strong><br /><br />
-        Kartikey Technology Services<br />
-        AGF-33, Ansal Town, Nr Bikanerwala, NH-58,<br />
-        Modipuram, Meerut - 250001,<br />
-        Uttar Pradesh, India
-      </div>
-    </div>
-  </section>
-
-
-  <!-- POLICIES -->
-  <section id="policies">
-    <div class="container">
-      <div class="eyebrow">Policies &amp; Terms</div>
-
-      <h2>Platform Policies</h2>
-
-      <p class="section-intro">
-        These policies explain how SainiSamajVivah services, membership,
-        payments, privacy and related matters are handled.
-      </p>
-
-
-      <div class="policy-grid">
-
-        <!-- PRIVACY -->
-        <article class="policy" id="privacy">
-          <h3>Privacy Policy</h3>
-
-          <p>
-            Kartikey Technology Services respects the privacy of users of
-            SainiSamajVivah. Information may be collected when users register,
-            create or manage matrimonial profiles, communicate with the platform,
-            purchase membership, or use platform features.
-          </p>
-
-          <p>
-            Information may include identity and contact details, matrimonial
-            profile information, community-related information, preferences,
-            photographs, membership information, transaction references, and
-            technical information required for operation and security.
-          </p>
-
-          <p>
-            Information is used for operating the matrimonial service,
-            administering memberships, providing eligible platform functionality,
-            supporting users, maintaining security, complying with applicable
-            obligations, and improving the service.
-          </p>
-
-          <p>
-            Payment transactions may be processed by authorised third-party
-            payment service providers. Kartikey Technology Services does not intend to
-            store users' full card credentials on this website.
-          </p>
-
-          <p>
-            Access to matrimonial information may depend on platform permissions,
-            profile settings, membership status, community configuration and
-            applicable privacy controls.
-          </p>
-        </article>
-
-
-        <!-- TERMS -->
-        <article class="policy" id="terms">
-          <h3>Terms &amp; Conditions</h3>
-
-          <p>
-            This website is operated by <strong>Kartikey Technology Services</strong>.
-            SainiSamajVivah is a digital matrimonial platform operated under the
-            AllSamajVivah Control Center framework.
-          </p>
-
-          <ul>
-            <li>
-              Users must be legally eligible to use matrimonial services and must
-              provide accurate and appropriate information.
-            </li>
-            <li>
-              Users are responsible for the accuracy of profile information they
-              submit or manage.
-            </li>
-            <li>
-              Platform access and features may depend on membership status,
-              eligibility, permissions and platform rules.
-            </li>
-            <li>
-              Misrepresentation, misuse, harassment, unlawful activity or abuse
-              of the platform may result in restriction or termination of access.
-            </li>
-            <li>
-              The platform facilitates matrimonial introductions and does not
-              guarantee a match, engagement, marriage or any particular outcome.
-            </li>
-            <li>
-              Users and families are responsible for performing their own
-              appropriate verification and due diligence before making personal
-              or matrimonial decisions.
-            </li>
-          </ul>
-        </article>
-
-
-        <!-- RETURN & REFUND -->
-        <article class="policy" id="refund">
-          <h3>Return &amp; Refund Policy</h3>
-
-          <p>
-            SainiSamajVivah provides digital memberships and related digital
-            services. Since no physical products are supplied under these standard
-            services, physical product returns are not applicable.
-          </p>
-
-          <p>
-            Refund consideration may apply in circumstances such as duplicate
-            payments, payment collected where the corresponding service could not
-            be provided, failed activation after successful payment verification,
-            or another case determined to be eligible after review.
-          </p>
-
-          <p>
-            Approval of a refund is not automatic. Each eligible request may be
-            reviewed against payment records, membership or service status,
-            activation status, service usage, and other relevant information.
-          </p>
-
-          <p>
-            Where a refund is approved, it will ordinarily be initiated to the
-            original payment method or original payment channel used for the
-            transaction, where supported by the applicable payment service provider.
-          </p>
-
-          <p>
-            Approved refunds are generally initiated within 5 to 7 business days
-            after approval. The time taken for the refunded amount to reflect in
-            the user's account may additionally depend on the payment service
-            provider, bank, card issuer, or other financial institution involved.
-          </p>
-
-          <p>
-            For refund assistance, contact
-            <a href="mailto:sudhir.sainikr@gmail.com">
-              sudhir.sainikr@gmail.com
-            </a>.
-          </p>
-        </article>
-
-
-        <!-- CANCELLATION -->
-        <article class="policy" id="cancellation">
-          <h3>Cancellation Policy</h3>
-
-          <p>
-            Cancellation requests for an eligible membership or related paid
-            digital service may be submitted within 24 hours of payment, provided
-            the membership or related service has not been substantially used,
-            consumed, activated, or delivered.
-          </p>
-
-          <p>
-            Each cancellation request is reviewed against the transaction record,
-            membership or service status, activation status, service usage, and
-            applicable platform rules.
-          </p>
-
-          <p>
-            Where a cancellation request is approved and a refund is applicable,
-            the refund will be handled in accordance with the Return &amp; Refund
-            Policy published on this website.
-          </p>
-
-          <p>
-            For cancellation assistance, contact
-            <a href="mailto:sudhir.sainikr@gmail.com">
-              sudhir.sainikr@gmail.com
-            </a>.
-          </p>
-        </article>
-
-
-        <!-- DELIVERY -->
-        <article class="policy" id="delivery">
-          <h3>Service Delivery Policy</h3>
-
-          <p>
-            SainiSamajVivah provides digital matrimonial memberships and related
-            support services. No physical product shipping is involved in these
-            standard digital-service purchases.
-          </p>
-
-          <p>
-            For paid memberships or services, the applicable membership access,
-            service delivery, or activation is processed after successful payment
-            verification and completion of the required server-side processing,
-            eligibility, and administrative checks.
-          </p>
-
-          <p>
-            Available functionality may depend on membership status, profile
-            status, privacy settings, permissions and other applicable platform
-            rules.
-          </p>
-
-          <p>
-            If a user experiences difficulty after an eligible payment, support
-            can be requested through the contact details published on this
-            website.
-          </p>
-        </article>
-
-
-        <!-- PAYMENT -->
-        <article class="policy" id="payment">
-          <h3>Payment Policy</h3>
-
-          <p>
-            Membership and service pricing displayed on this website represents
-            the current published pricing and may be revised from time to time in
-            accordance with Kartikey Technology Services' marketing and commercial
-            policies.
-          </p>
-
-          <p>
-            Any applicable discount, tax, adjustment and final payable amount
-            will be presented as part of the applicable transaction process before
-            payment confirmation.
-          </p>
-
-          <p>
-            When online payment functionality is enabled, payments may be
-            processed through authorised third-party payment service providers.
-            Availability of specific payment methods depends on the payment
-            service provider and the transaction environment.
-          </p>
-
-          <p>
-            A membership or paid service is treated as paid only after the
-            corresponding payment has been successfully verified through the
-            applicable payment processing mechanism.
-          </p>
-
-          <p>
-            Transaction records may be maintained for membership administration,
-            accounting, reconciliation, support, fraud prevention and other
-            legitimate business or legal purposes.
-          </p>
-        </article>
-
-
-        <!-- BUSINESS INFORMATION -->
-        <article class="policy">
-          <h3>Merchant / Business Information</h3>
-
-          <p>
-            <strong>Business / Operator:</strong><br />
-            Kartikey Technology Services
-          </p>
-
-          <p>
-            <strong>Service:</strong><br />
-            SainiSamajVivah
-          </p>
-
-          <p>
-            <strong>Framework:</strong><br />
-            AllSamajVivah Control Center
-          </p>
-
-          <p>
-            <strong>Email:</strong><br />
-            sudhir.sainikr@gmail.com
-          </p>
-
-          <p>
-            <strong>Phone:</strong><br />
-            +91 9760038400
-          </p>
-
-          <p>
-            <strong>Address:</strong><br />
-            AGF-33, Ansal Town, Nr Bikanerwala, NH-58,<br />
-            Modipuram, Meerut - 250001,<br />
-            Uttar Pradesh, India
-          </p>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-</main>
-
-
-<footer>
-  <div class="container">
-
-    <div class="footer-grid">
-
-      <div>
-        <div class="footer-title">SainiSamajVivah</div>
-
-        <p>
-          A community matrimonial platform operated by Kartikey Technology Services
-          under the AllSamajVivah Control Center framework.
-        </p>
-      </div>
-
-      <div>
-        <div class="footer-title">Important Links</div>
-
-        <div class="footer-links">
-          <a href="#about">About</a>
-          <a href="#membership">Membership</a>
-          <a href="#contact">Contact</a>
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#terms">Terms &amp; Conditions</a>
-          <a href="#refund">Return &amp; Refund Policy</a>
-          <a href="#cancellation">Cancellation Policy</a>
-          <a href="#delivery">Service Delivery</a>
-          <a href="#payment">Payment Policy</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="copyright">
-      © 2026 Kartikey Technology Services. All rights reserved.
-      SainiSamajVivah operates under the AllSamajVivah Control Center framework.
-    </div>
-
-  </div>
-</footer>
-
+    </footer>
+    <script>
+  const policiesLanguage = document.getElementById("policiesLanguage");
+  const policiesEnglish = document.getElementById("policiesEnglish");
+  const policiesHindi = document.getElementById("policiesHindi");
+  policiesLanguage.addEventListener("change", function () {
+    const useHindi = policiesLanguage.value === "hi";
+    policiesEnglish.hidden = useHindi;
+    policiesHindi.hidden = !useHindi;
+  });
+
+  const aboutLanguage = document.getElementById("aboutLanguageToggle");
+  const englishContent = document.getElementById("aboutEnglish");
+  const hindiContent = document.getElementById("aboutHindi");
+
+  aboutLanguage.addEventListener("change", function () {
+    const switchToHindi = aboutLanguage.value === "hi";
+    englishContent.hidden = switchToHindi;
+    document.getElementById("aboutEnglishHeading").hidden = switchToHindi;
+    document.getElementById("aboutHindiHeading").hidden = !switchToHindi;
+    hindiContent.hidden = !switchToHindi;
+    document.querySelectorAll(".card-en").forEach(el => {
+      el.hidden = switchToHindi;
+    });
+    document.querySelectorAll(".card-hi").forEach(el => {
+      el.hidden = !switchToHindi;
+    });
+  });
+    </script>
 </body>
 </html>
