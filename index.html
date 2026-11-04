@@ -1306,7 +1306,20 @@ function showProduct(product) {
     document.getElementById("productDescription").textContent = selected.description;
     document.getElementById("productDialog").showModal();
 }
+// TASK 006 - Close Products dropdown on outside click
+const productsMenu = document.querySelector(".products-menu");
 
+document.addEventListener("click", function (event) {
+    if (productsMenu && !productsMenu.contains(event.target)) {
+        productsMenu.open = false;
+    }
+});
+
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && productsMenu) {
+        productsMenu.open = false;
+    }
+});
     </script>
 </body>
 </html>
