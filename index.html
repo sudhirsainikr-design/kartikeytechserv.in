@@ -460,6 +460,45 @@
         padding: 70px 0;
       }
     }
+  	/* TASK 006 — Products Menu */
+  	.products-options button {
+  		display: block;
+  		width: 100%;
+  		padding: 10px 12px;
+  		border: none;
+  		background: white;
+  		color: #453c3c;
+  		text-align: left;
+  		font: inherit;
+  		cursor: pointer;
+  	}
+
+  		.products-options button:hover {
+  			background: #f7efe3;
+  			color: #8f2038;
+  		}
+
+  	/* Product Description Window */
+  	.product-dialog {
+  		width: min(480px, 90%);
+  		border: 1px solid #eadcc8;
+  		border-radius: 12px;
+  		padding: 28px;
+  		box-shadow: 0 12px 30px rgba(65, 38, 38, 0.15);
+  	}
+
+  		.product-dialog::backdrop {
+  			background: rgba(0, 0, 0, 0.45);
+  		}
+
+  		.product-dialog button {
+  			padding: 10px 22px;
+  			background: #8f2038;
+  			color: white;
+  			border: none;
+  			border-radius: 6px;
+  			cursor: pointer;
+  		}
   </style>
 </head>
 
@@ -478,8 +517,10 @@
                 <details class="products-menu">
                     <summary>Products</summary>
                     <div class="products-options">
-                        <span>ASVCC Management — Coming Soon</span>
-                        <span>MMS – SainiSamajVivah — Coming Soon</span>
+                        <button type="button" onclick="showProduct('asvcc')">ASVCC Controls</button>
+                        <button type="button" onclick="showProduct('saini')">SainiSamajVivah</button>
+                        <button type="button" onclick="showProduct('brahmin')">BrahminSamajVivah</button>
+                        <button type="button" onclick="showProduct('baniya')">BaniyaSamajVivah</button>
                     </div>
                 </details>
                 <a href="#membership">Membership</a>
@@ -1162,6 +1203,14 @@
     </main>
 
 
+    <dialog id="productDialog" class="product-dialog">
+        <h2 id="productTitle"></h2>
+        <p id="productDescription"></p>
+        <button type="button" onclick="document.getElementById('productDialog').close()">
+            Close
+        </button>
+    </dialog>
+
     <footer>
         <div class="container">
 
@@ -1203,32 +1252,61 @@
         </div>
     </footer>
     <script>
-  const policiesLanguage = document.getElementById("policiesLanguage");
-  const policiesEnglish = document.getElementById("policiesEnglish");
-  const policiesHindi = document.getElementById("policiesHindi");
-  policiesLanguage.addEventListener("change", function () {
-    const useHindi = policiesLanguage.value === "hi";
-    policiesEnglish.hidden = useHindi;
-    policiesHindi.hidden = !useHindi;
-  });
+          const policiesLanguage = document.getElementById("policiesLanguage");
+          const policiesEnglish = document.getElementById("policiesEnglish");
+          const policiesHindi = document.getElementById("policiesHindi");
+          policiesLanguage.addEventListener("change", function () {
+            const useHindi = policiesLanguage.value === "hi";
+            policiesEnglish.hidden = useHindi;
+            policiesHindi.hidden = !useHindi;
+          });
 
-  const aboutLanguage = document.getElementById("aboutLanguageToggle");
-  const englishContent = document.getElementById("aboutEnglish");
-  const hindiContent = document.getElementById("aboutHindi");
+          const aboutLanguage = document.getElementById("aboutLanguageToggle");
+          const englishContent = document.getElementById("aboutEnglish");
+          const hindiContent = document.getElementById("aboutHindi");
 
-  aboutLanguage.addEventListener("change", function () {
-    const switchToHindi = aboutLanguage.value === "hi";
-    englishContent.hidden = switchToHindi;
-    document.getElementById("aboutEnglishHeading").hidden = switchToHindi;
-    document.getElementById("aboutHindiHeading").hidden = !switchToHindi;
-    hindiContent.hidden = !switchToHindi;
-    document.querySelectorAll(".card-en").forEach(el => {
-      el.hidden = switchToHindi;
-    });
-    document.querySelectorAll(".card-hi").forEach(el => {
-      el.hidden = !switchToHindi;
-    });
-  });
+          aboutLanguage.addEventListener("change", function () {
+            const switchToHindi = aboutLanguage.value === "hi";
+            englishContent.hidden = switchToHindi;
+            document.getElementById("aboutEnglishHeading").hidden = switchToHindi;
+            document.getElementById("aboutHindiHeading").hidden = !switchToHindi;
+            hindiContent.hidden = !switchToHindi;
+            document.querySelectorAll(".card-en").forEach(el => {
+              el.hidden = switchToHindi;
+            });
+            document.querySelectorAll(".card-hi").forEach(el => {
+              el.hidden = !switchToHindi;
+            });
+          });
+
+function showProduct(product) {
+    const products = {
+        asvcc: {
+            title: "ASVCC Controls",
+            description: "Central administration and configuration platform for managing community matrimonial applications."
+        },
+        saini: {
+            title: "SainiSamajVivah",
+            description: "Community matrimonial platform with profile and membership services for Saini Samaj."
+        },
+        brahmin: {
+            title: "BrahminSamajVivah",
+            description: "Community matrimonial platform with profile and membership services for Brahmin Samaj."
+        },
+        baniya: {
+            title: "BaniyaSamajVivah",
+            description: "Community matrimonial platform with profile and membership services for Baniya Samaj."
+        }
+    };
+
+    const selected = products[product];
+    if (!selected) return;
+
+    document.getElementById("productTitle").textContent = selected.title;
+    document.getElementById("productDescription").textContent = selected.description;
+    document.getElementById("productDialog").showModal();
+}
+
     </script>
 </body>
 </html>
