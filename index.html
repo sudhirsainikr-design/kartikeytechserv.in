@@ -64,9 +64,36 @@
       gap: 24px;
     }
 
-    .brand {
-      text-decoration: none;
-    }
+
+  	.brand {
+  		display: flex;
+  		align-items: center;
+  		gap: 12px;
+  		text-decoration: none;
+  		flex-shrink: 0;
+  	}
+
+  	.brand-logo {
+  		width: 68px;
+  		height: 68px;
+  		object-fit: contain;
+  		flex-shrink: 0;
+  	}
+
+  	.brand-text {
+  		display: flex;
+  		flex-direction: column;
+  	}
+
+  	.brand-tagline {
+  		display: block;
+  		color: var(--gold);
+  		font-size: 10px;
+  		font-weight: bold;
+  		letter-spacing: 0.5px;
+  		line-height: 1.5;
+  	}
+
 
     .brand-main {
       display: block;
@@ -507,8 +534,15 @@
     <header>
         <div class="container nav">
             <a href="#home" class="brand">
-                <span class="brand-main">SainiSamajVivah</span>
-                <span class="brand-sub">Operated by Kartikey Technology Services</span>
+                <img src="ssv-logo.png"
+                     alt="SainiSamajVivah - A Lifetime of Togetherness"
+                     class="brand-logo" />
+
+                <span class="brand-text">
+                    <span class="brand-main">SainiSamajVivah</span>
+                    <span class="brand-tagline">A LIFETIME OF TOGETHERNESS</span>
+                    <span class="brand-sub">Operated by Kartikey Technology Services</span>
+                </span>
             </a>
 
             <nav>
@@ -525,6 +559,7 @@
                 </details>
                 <a href="#membership">Membership</a>
                 <a href="#contact">Contact</a>
+                <a href="#customer-enquiry">Customer Enquiry</a>
                 <a href="#policies">Policies</a>
             </nav>
         </div>
@@ -847,7 +882,7 @@
                 </div>
 
                 <!-- TASK 004 — Customer Enquiry -->
-                <div class="card" style="margin-top:28px;">
+                <div id="customer-enquiry" class="card" style="margin-top:28px; scroll-margin-top:100px;">
                     <h3>Customer Enquiry</h3>
                     <p>
                         Have a question about membership, profile assistance,
