@@ -525,6 +525,30 @@
 				border-radius: 6px;
 				cursor: pointer;
 			}
+	
+        /* KTS Portal Announcement Management — isolated styles */
+        #portalAnnouncement[hidden], #adminNavLink[hidden], #adminPanel[hidden],
+        #adminLoggedOut[hidden], #adminLoggedIn[hidden] { display: none !important; }
+        #portalAnnouncement {
+            background: #fff4df; border-bottom: 1px solid #efc991;
+            color: #693a19; padding: 11px 0; text-align: center;
+            font-size: 15px; font-weight: 650;
+        }
+        #portalAnnouncement .container { overflow-wrap: anywhere; }
+        #adminNavLink { color: var(--primary); }
+        #adminPanel { background: #fffaf3; padding: 35px 0 45px; }
+        .kts-admin-box { max-width: 700px; padding: 24px; background: white;
+            border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow); }
+        .kts-admin-box label { display: block; margin-top: 14px; font-weight: 600; }
+        .kts-admin-box input, .kts-admin-box textarea { width: 100%; max-width: 100%;
+            padding: 11px; font: inherit; border: 1px solid #bba99c; border-radius: 6px; }
+        .kts-admin-box textarea { min-height: 100px; resize: vertical; }
+        .kts-admin-box .check-row { display: flex; align-items: center; gap: 10px; }
+        .kts-admin-box .check-row input { width: auto; }
+        .kts-admin-box button { margin: 13px 12px 0 0; cursor: pointer; }
+        .kts-admin-status { min-height: 1.4em; color: #6f162a; overflow-wrap: anywhere; }
+        .kts-admin-helper { color: var(--muted); font-size: 13px; }
+
 	</style>
 </head>
 
@@ -560,10 +584,50 @@
 				<a href="#contact">Contact</a>
 				<a href="#customer-enquiry">Customer Enquiry</a>
 				<a href="#policies">Policies</a>
+				<a href="#adminPanel" id="adminNavLink" hidden>Admin</a>
 			</nav>
 		</div>
 	</header>
 
+    <!-- Invisible unless enabled and loaded from Firebase; never blocks page rendering. -->
+    <aside id="portalAnnouncement" aria-live="polite" hidden>
+        <div class="container" id="portalAnnouncementText"></div>
+    </aside>
+
+
+
+
+    <!-- Accessible only from ?admin=1; Firestore rules enforce authorization independently. -->
+    <section id="adminPanel" hidden aria-label="KTS Portal Announcement Administration">
+        <div class="container">
+            <div class="kts-admin-box">
+                <h2>Portal Announcement Management</h2>
+                <p class="kts-admin-helper">Only the authorized KTS administrator can save changes. Changes are visible on the website without redeployment.</p>
+                <div id="adminLoggedOut">
+                    <form id="adminLoginForm" autocomplete="on">
+                        <label for="adminEmail">Admin email</label>
+                        <input id="adminEmail" type="email" value="kts.sampark@gmail.com" autocomplete="username" required />
+                        <label for="adminPassword">Password</label>
+                        <input id="adminPassword" type="password" autocomplete="current-password" required />
+                        <button class="btn btn-primary" type="submit">Sign In</button>
+                    </form>
+                </div>
+                <div id="adminLoggedIn" hidden>
+                    <p>Signed in as <strong id="adminIdentity"></strong></p>
+                    <form id="announcementEditForm">
+                        <label for="announcementMessageInput">Announcement message</label>
+                        <textarea id="announcementMessageInput" maxlength="500" required></textarea>
+                        <label class="check-row" for="announcementEnabledInput">
+                            <input id="announcementEnabledInput" type="checkbox" /> Display announcement on website
+                        </label>
+                        <button class="btn btn-primary" type="submit">Save Announcement</button>
+                        <button class="btn btn-secondary" type="button" id="adminSignOut">Sign Out</button>
+                    </form>
+                </div>
+                <p id="adminStatus" class="kts-admin-status" role="status" aria-live="polite"></p>
+            </div>
+        </div>
+    </section>
 
 	<main>
 
@@ -1372,5 +1436,115 @@ document.addEventListener("keydown", function (event) {
 			}
 });
 	</script>
+
+    <!-- Firebase browser modules: no npm, no Firebase Hosting, and no page-blocking dependency. -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+        // Public Firebase web app identifiers (not an Admin SDK credential).
+        const firebaseConfig = {
+            apiKey: "AIzaSyAil0eFphkFm7JpARDsnZ2DpCqqDvIMxaA",
+            authDomain: "kts-portal-announcements.firebaseapp.com",
+            projectId: "kts-portal-announcements",
+            storageBucket: "kts-portal-announcements.firebasestorage.app",
+            messagingSenderId: "963471816343",
+            appId: "1:963471816343:web:ba723fe65d8575cd309bd2"
+        };
+        const ADMIN_UID = "eqKFEroFNAhF37NDkYS7nGdHwWr2";
+        const adminRequested = new URLSearchParams(window.location.search).get("admin") === "1";
+        const banner = document.getElementById("portalAnnouncement");
+        const bannerText = document.getElementById("portalAnnouncementText");
+        const status = document.getElementById("adminStatus");
+        const panel = document.getElementById("adminPanel");
+        const loggedIn = document.getElementById("adminLoggedIn");
+        const loggedOut = document.getElementById("adminLoggedOut");
+        const messageInput = document.getElementById("announcementMessageInput");
+        const enabledInput = document.getElementById("announcementEnabledInput");
+        if (adminRequested) {
+            document.getElementById("adminNavLink").hidden = false;
+            panel.hidden = false;
+            loggedOut.hidden = false;
+        }
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const announcementRef = doc(db, "portalAnnouncements", "main");
+        let auth;
+        let currentAdmin = null;
+        function showStatus(text) { status.textContent = text; }
+        function renderAnnouncement(data) {
+            const message = typeof data?.message === "string" ? data.message.trim() : "";
+            bannerText.textContent = message; // safe from HTML injection
+            banner.hidden = !(data?.enabled === true && message.length > 0);
+        }
+        async function loadAnnouncement() {
+            try {
+                const snap = await getDoc(announcementRef);
+                const data = snap.exists() ? snap.data() : null;
+                renderAnnouncement(data);
+                if (adminRequested && currentAdmin) {
+                    messageInput.value = data?.message || "";
+                    enabledInput.checked = data?.enabled === true;
+                }
+                return data;
+            } catch (error) {
+                renderAnnouncement(null); // fail closed; no visible error on public site
+                if (adminRequested) showStatus("Unable to load announcement. Check connectivity and Firebase configuration.");
+                return null;
+            }
+        }
+        // Firestore failure does not delay or hide the rest of the KTS website.
+        loadAnnouncement();
+        if (adminRequested) {
+            auth = getAuth(app);
+            onAuthStateChanged(auth, async (user) => {
+                currentAdmin = user && user.uid === ADMIN_UID ? user : null;
+                loggedIn.hidden = !currentAdmin;
+                loggedOut.hidden = !!currentAdmin;
+                if (user && !currentAdmin) {
+                    showStatus("This account is not authorized for KTS announcement administration.");
+                    await signOut(auth);
+                } else if (currentAdmin) {
+                    document.getElementById("adminIdentity").textContent = user.email || "Authorized admin";
+                    showStatus("");
+                    await loadAnnouncement();
+                }
+            });
+            document.getElementById("adminLoginForm").addEventListener("submit", async (event) => {
+                event.preventDefault();
+                showStatus("Signing in...");
+                try {
+                    await signInWithEmailAndPassword(auth, document.getElementById("adminEmail").value.trim(), document.getElementById("adminPassword").value);
+                    document.getElementById("adminPassword").value = "";
+                } catch (error) {
+                    showStatus("Sign in failed. Check credentials and try again.");
+                }
+            });
+            document.getElementById("announcementEditForm").addEventListener("submit", async (event) => {
+                event.preventDefault();
+                if (!currentAdmin) { showStatus("Not authorized."); return; }
+                const message = messageInput.value.trim();
+                if (!message || message.length > 500) { showStatus("Enter a message of up to 500 characters."); return; }
+                const button = event.target.querySelector('button[type="submit"]');
+                button.disabled = true;
+                showStatus("Saving...");
+                try {
+                    await setDoc(announcementRef, { message, enabled: enabledInput.checked }, { merge: true });
+                    renderAnnouncement({ message, enabled: enabledInput.checked });
+                    showStatus("Announcement saved successfully.");
+                } catch (error) {
+                    showStatus("Save failed. Please verify your admin permission and connection.");
+                } finally {
+                    button.disabled = false;
+                }
+            });
+            document.getElementById("adminSignOut").addEventListener("click", async () => {
+                await signOut(auth);
+                showStatus("Signed out.");
+            });
+        }
+    </script>
+
 </body>
 </html>
