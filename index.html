@@ -127,6 +127,8 @@
 					color: var(--primary);
 				}
 
+        /* Temporarily hide the Products navigation during merchant review. */
+        .products-menu[hidden] { display: none !important; }
 		.products-menu {
 			position: relative;
 			font-size: 14px;
@@ -571,7 +573,7 @@
 			<nav>
 				<a href="#home">Home</a>
 				<a href="#about">About</a>
-				<details class="products-menu">
+				<details class="products-menu" hidden inert>
 					<summary>Products</summary>
 					<div class="products-options">
 						<button type="button" onclick="showProduct('asvcc')">ASVCC Controls</button>
@@ -598,11 +600,11 @@
 
 
     <!-- Accessible only from ?admin=1; Firestore rules enforce authorization independently. -->
-    <section id="adminPanel" hidden aria-label="KTS Portal Announcement Administration">
+    <section id="adminPanel" hidden aria-label="Portal Announcement Administration">
         <div class="container">
             <div class="kts-admin-box">
                 <h2>Portal Announcement Management</h2>
-                <p class="kts-admin-helper">Only the authorized KTS administrator can save changes. Changes are visible on the website without redeployment.</p>
+                <p class="kts-admin-helper">Only the authorized administrator can save changes. Changes are visible on the website without redeployment.</p>
                 <div id="adminLoggedOut">
                     <form id="adminLoginForm" autocomplete="on">
                         <label for="adminEmail">Admin email</label>
@@ -670,14 +672,6 @@
 
 				<div class="about-copy" id="aboutEnglish">
 					<p>
-						<strong>Kartikey Technology Services</strong> is an enterprise-oriented
-						technology and social development organization engaged in building
-						practical digital solutions and services across areas including
-						consultancy, research &amp; development, platform design, technology
-						implementation, and production-oriented digital initiatives.
-					</p>
-
-					<p>
 						One of its major social-platform initiatives is
 						<strong>AllSamajVivah Control Center</strong> — a broader matrimonial
 						technology framework designed to serve diverse societies and communities
@@ -714,14 +708,6 @@
 				</div>
 
 				<div class="about-copy" id="aboutHindi" lang="hi" hidden>
-
-					<p>
-						<strong>कार्तिकेय टेक्नोलॉजी सर्विसेज</strong> एक प्रौद्योगिकी एवं
-						सामाजिक विकास संगठन है, जो परामर्श, अनुसंधान एवं विकास,
-						डिजिटल प्लेटफ़ॉर्म डिज़ाइन, तकनीकी कार्यान्वयन तथा
-						उत्पादन-संबंधी डिजिटल पहलों में व्यावहारिक समाधान और सेवाएँ
-						विकसित करता है।
-					</p>
 
 					<p>
 						इसकी प्रमुख सामाजिक पहलों में से एक
@@ -1333,11 +1319,10 @@
 			<div class="footer-grid">
 
 				<div>
-					<div class="footer-title">SainiSamajVivah</div>
+					<div class="footer-title">Kartikey Technology Services</div>
 
 					<p>
-						A community matrimonial platform operated by Kartikey Technology Services
-						under the AllSamajVivah Control Center framework.
+						A Sole Proprietorship owned by <strong>Indu Saini</strong>
 					</p>
 				</div>
 
@@ -1575,4 +1560,4 @@ document.addEventListener("keydown", function (event) {
     </script>
 
 </body>
-</html>
+</html> 
